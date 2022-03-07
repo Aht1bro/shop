@@ -1,0 +1,13 @@
+@import 'global.css';
+@import 'normalize.css';
+
+:root {
+	--gutter: 20px;
+}
+
+.container {
+	/* max-width: 1234px; */
+	max-width: 1244px;
+	padding: 0 var(--gutter);
+	margin: 0 auto;
+}

@@ -1,0 +1,60 @@
+{% extends 'katalog.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'shop/css/style2.css' %}">
+<link rel="stylesheet" href="{% static '/shop/new2/prosto.css' %}">
+
+
+<div class="wrapper">
+	<div class="breadcrumbs">
+	  <ul>
+		<li><a href="{% url 'header2' %}">
+		<i class="fas fa-home icon"></i>
+		<p>Главная</p>
+		</a></li>
+		<li><a href="{{ category.get_absolute_url }}">
+		<i class="fas fa-tshirt icon"></i>
+		<p>{{ product.category.name }}</p>
+		</a></li>
+		<li><a href="{% url 'cart' %}">
+		<i class="fas fa-shopping-cart icon"></i>
+		<p>Cart</p>
+		</a></li>
+		<li class="active">
+		<p>{{ product.title }}</p>
+		</li>
+	  </ul>
+	</div>
+  </div>
+
+ <div class="container1 container">
+            
+                {% for product in category_products %}
+                <section class="section1">
+                <div class="tovar">
+
+                    <a href="{{ product.get_absolute_url }}">
+                        <div  data-aos="zoom-in-up" title="О товаре" class="pod-tovar cart">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img class="img" src="{{ product.image.url }}" alt="">
+                            </a>
+                            <p class="pod">
+                                <a class="a name" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                                <br>
+                                <a class="p cost" href="{{ product.get_absolute_url }}">{{ product.price }} сом</a>
+
+                            </p>
+                            <a href="{% url 'add_to_cart' slug=product.slug %}"><button class="btn btn-danger">Добавить в корзину</button></a>
+
+                        </div>
+                    </a>
+                </div>
+               
+            </section>
+            {% endfor %}
+        </div>
+
+{% endblock content %}

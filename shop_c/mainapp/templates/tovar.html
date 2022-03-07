@@ -1,0 +1,191 @@
+{% comment %} {% extends 'cart.html' %} {% endcomment %}
+{% load static %}
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="{% static '/shop/new2/prosto.css' %}">
+  <link rel="stylesheet" href="{% static '/shop/new2/modal.css' %}">
+  <link rel="stylesheet" href="{% static '/shop/new2/style.css' %}">
+  <link rel="stylesheet" href="{% static '/shop/new2/slider.css' %}">
+
+<!-- a simple div with some links -->
+
+{% block content %}
+{% comment %} 
+<div class="div-bread">
+	<div class="breadcrumb">
+		<a href="{% url 'header2' %}"><i class="fas fa-home"></i>  Home</a>
+		<a href="{{ category.get_absolute_url }}">{{ product.category.name }}</a>
+		<div class="breadcrumb-item disactive">{{ product.title }}</div>
+	</div>
+</div> {% endcomment %}
+
+
+<div class="wrapper">
+	<div class="breadcrumbs">
+	  <ul>
+		<li><a href="{% url 'header2' %}">
+		<i class="fas fa-home icon"></i>
+		<p>Главная</p>
+		</a></li>
+		<li><a href="{{ category.get_absolute_url }}">
+		<i class="fas fa-tshirt icon"></i>
+		<p>{{ product.category.name }}</p>
+		</a></li>
+		<li><a href="{% url 'cart' %}">
+		<i class="fas fa-shopping-cart icon"></i>
+		<p>Cart</p>
+		</a></li>
+		<li class="active">
+		<p>{{ product.title }}</p>
+		</li>
+	  </ul>
+	</div>
+  </div>	
+
+  {% comment %} <div class = "card-wrapper">
+      <div class = "card">
+        <!-- card left -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src = "{{ product.image.url }}" alt = "shoe image">
+{% if product.image_b %}
+              <img src = "{{ product.image_b.url }}" alt = "shoe image">
+{% endif%}
+{% if product.image_t %}
+              <img src = "{{ product.image_t.url }}" alt = "shoe image">
+{% endif%}
+            </div>
+          </div>
+          <div class = "img-select">
+            <div class = "img-item">
+              <a href = "#" data-id = "1">
+                <img src = "{{ product.image.url }}" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2">
+              {% if product.image_b %}
+                <img src = "{{ product.image_b.url }}" alt = "shoe image">
+                {% endif%}
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3">
+                {% if product.image_t %}
+              <img src = "{{ product.image_t.url }}" alt = "shoe image">
+                {% endif%}
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title">{{product.title}}</h2>
+
+          <div class = "product-price">
+            <p class = "new-price">Цена:<span> {{ product.price }} сом</span></p>
+          </div>
+
+          <div class = "product-detail">
+            <h2>Описание о товаре: </h2>
+            <p>{{ product.description }}</p>
+          </div>
+
+          <div class = "purchase-info">
+             <a href="{% url 'add_to_cart' slug=product.slug %}"><button type="button" class="btn">Добавить в корзину <i class = "fas fa-shopping-cart"></i></button></a>
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="lead custom d-inline-flex">
+            <em>
+           - Кастомизация Кроссовок
+            </em>
+          </div>
+        </div>
+      </div>
+    </div>
+ {% endcomment %}
+
+
+<div class="container">
+		<div class="card">
+			<div class="card-slider">
+				<div class="card-slider__nav slider-nav">
+					<div class="slider-nav__item" tabindex="0"><img src="{{ product.image.url }}" alt=""></div>
+					<div class="slider-nav__item" tabindex="0"><img src="{{ product.image_t.url }}" alt=""></div>
+					<div class="slider-nav__item" tabindex="0"><img src="{{ product.image_b.url }}" alt=""></div>
+					<div class="slider-nav__item" tabindex="0"><img src="{{ product.image_r.url }}" alt=""></div>
+					<div class="slider-nav__item" tabindex="0"><img src="{{ product.image_l.url }}" alt=""></div>
+					{% comment %} <div class="slider-nav__item" tabindex="0"><img src="img/macbook.jpg" alt=""></div>
+					<div class="slider-nav__item" tabindex="0"><img src="img/macbook.jpg" alt=""></div>
+					<div class="slider-nav__item" tabindex="0"><img src="img/macbook.jpg" alt=""></div> {% endcomment %}
+				</div>
+				<div class="card-slider__block slider-block">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="{{ product.image.url }}" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="{{ product.image_t.url }}" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="{{ product.image_b.url }}" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="{{ product.image_r.url }}" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="{{ product.image_l.url }}" alt="">
+						</div>
+						{% comment %} <div class="swiper-slide">
+							<img src="img/macbook.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="img/macbook.jpg" alt="">
+						</div>
+						<div class="swiper-slide">
+							<img src="img/macbook.jpg" alt="">
+						</div> {% endcomment %}
+					</div>
+				</div>
+			</div>
+			<div class="card-info">
+				<h1 class="title-e">{{product.title}}</h1>
+				<span class="available">В началии: 13 шт</span>
+				<div class = "product-detail">
+					<h2>О товаре:</h2>
+					<p>{{ product.description }}
+				</div>
+				<br>
+				<br>
+				<div class="price">
+					<span class="price__current">Цена:{{ product.price }} сом</span>
+					<span class="price__old">Цена: {{ product.old_price }} сом</span>
+				</div>
+				{% comment %} <button class="buy">Купить</button> {% endcomment %}
+				<div class = "purchase-info">
+					<a href="{% url 'add_to_cart' slug=product.slug %}"><button type="button" class="buy">Добавить в корзину <i class = "fas fa-shopping-cart"></i></button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal__container" role="dialog" aria-modal="true" data-graph-target="one">
+			<button class="btn-reset modal__close">Закрыть</button>
+			<div class="modal-content">
+				Модальное окно
+			</div>
+		</div>
+	</div>
+	<div class="height"></div>
+	<script src="{%static '/shop/js/modal.js' %}"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+{% comment %} <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script> {% endcomment %}
+{% comment %} <script src="{%static '/shop/css/index.js' %}"></script> {% endcomment %}
+<script src="{%static '/shop/js/slider.js' %}"></script>
+{% endblock content %}
